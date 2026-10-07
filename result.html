@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body { font-family:Arial,sans-serif; background:#f4f6f8; }
+        .box { max-width:650px; margin:80px auto; background:white; padding:40px; text-align:center; border-radius:12px; }
+        .result { font-size:32px; font-weight:bold; margin:20px; }
+        .prob { font-size:24px; }
+        a { display:inline-block; margin-top:25px; padding:12px 20px; background:#333; color:white; text-decoration:none; border-radius:7px; }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1>Prediction Result</h1>
+    <div class="result">{{ result }}</div>
+    <div class="prob">Churn Probability: <b>{{ probability }}%</b></div>
+    <p>{{ message }}</p>
+    <a href="/">← Try Another Customer</a>
+</div>
+</body>
+</html>
