@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Churn Predictor</title>
+    <style>
+        body { font-family: Arial, sans-serif; background:#f4f6f8; margin:0; }
+        .container { max-width:1000px; margin:30px auto; background:white; padding:30px; border-radius:12px; }
+        h1 { margin-top:0; }
+        .cards { display:flex; gap:15px; margin-bottom:25px; }
+        .card { flex:1; padding:18px; background:#eef3f7; border-radius:10px; text-align:center; }
+        .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
+        label { font-weight:bold; font-size:14px; }
+        input, select { width:100%; padding:10px; margin-top:6px; box-sizing:border-box; border:1px solid #ccc; border-radius:6px; }
+        button { margin-top:25px; width:100%; padding:13px; border:0; border-radius:7px; background:#333; color:white; font-size:16px; cursor:pointer; }
+        .hint { color:#666; font-size:13px; }
+        @media(max-width:700px){ .grid{grid-template-columns:1fr;} .cards{flex-direction:column;} }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📡 Customer Churn Predictor</h1>
+    <p>Simple Flask + Machine Learning application using the customer retention dataset.</p>
+
+    <div class="cards">
+        <div class="card"><b>{{ total_customers }}</b><br>Total Customers</div>
+        <div class="card"><b>{{ churned }}</b><br>Churned</div>
+        <div class="card"><b>{{ accuracy }}%</b><br>Test Accuracy</div>
+    </div>
+
+    <h2>Enter Customer Details</h2>
+    <p class="hint">Fill in the customer information and click Predict.</p>
+
+    <form action="/predict" method="post">
+        <div class="grid">
+            <div><label>Age</label><input type="number" name="age" value="35" min="18" max="100" required></div>
+            <div><label>Gender</label><select name="gender"><option>Male</option><option>Female</option><option>Other</option></select></div>
+            <div><label>City</label><select name="city"><option>Bengaluru</option><option>Chennai</option><option>Delhi</option><option>Hyderabad</option><option>Kolkata</option><option>Kochi</option><option>Mumbai</option><option>Pune</option><option>Jaipur</option></select></div>
+            <div><label>Plan Type</label><select name="plan_type"><option>Basic</option><option>Standard</option><option>Premium</option></select></div>
+            <div><label>Tenure (months)</label><input type="number" name="tenure_months" value="12" min="0" required></div>
+            <div><label>Monthly Bill</label><input type="number" name="monthly_bill" value="700" step="0.01" min="0" required></div>
+            <div><label>Total Spend</label><input type="number" name="total_spend" value="8000" step="0.01" min="0" required></div>
+            <div><label>Usage Hours / Month</label><input type="number" name="usage_hours_per_month" value="25" step="0.1" min="0" required></div>
+            <div><label>Support Tickets</label><input type="number" name="support_tickets" value="2" min="0" required></div>
+            <div><label>Avg Response Hours</label><input type="number" name="avg_response_hours" value="10" step="0.1" min="0" required></div>
+            <div><label>Payment Delay Days</label><input type="number" name="payment_delay_days" value="3" min="0" required></div>
+            <div><label>Auto Renewal</label><select name="auto_renewal"><option value="1">Yes</option><option value="0">No</option></select></div>
+            <div><label>Satisfaction Score (1-10)</label><input type="number" name="satisfaction_score" value="7" min="1" max="10" required></div>
+        </div>
+        <button type="submit">🔮 Predict Churn</button>
+    </form>
+</div>
+</body>
+</html>
